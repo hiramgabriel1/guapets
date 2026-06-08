@@ -285,6 +285,165 @@ const icons: Record<string, (props: SVGProps<SVGSVGElement>) => ReactElement> = 
       </g>
     </svg>
   ),
+  calendar: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M8 2v4m8-4v4" />
+        <rect width="18" height="18" x="3" y="4" rx="2" />
+        <path d="M3 10h18" />
+      </g>
+    </svg>
+  ),
+  check: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M20 6L9 17l-5-5"
+      />
+    </svg>
+  ),
+  syringe: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m18 2 4 4m-4 0-9 9-3-3 9-9M3 21l3-3m0 0-1-1m7-7 3 3m-3-3 1 1"
+      />
+    </svg>
+  ),
+  scissors: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="6" cy="6" r="3" />
+        <path d="M8.12 8.12 12 12" />
+        <path d="M20 4 8.12 15.88" />
+        <circle cx="6" cy="18" r="3" />
+        <path d="M14.8 14.8 20 20" />
+      </g>
+    </svg>
+  ),
+  activity: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"
+      />
+    </svg>
+  ),
+  scan: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 7V5a2 2 0 0 1 2-2h2m10 0h2a2 2 0 0 1 2 2v2m0 10v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"
+      />
+    </svg>
+  ),
+  "heart-pulse": (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+      />
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"
+      />
+    </svg>
+  ),
+  sparkles: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
+      />
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M20 3v4m-2-2h4" />
+    </svg>
+  ),
+  bandage: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7m-2-12l7 7"
+      />
+    </svg>
+  ),
+  "alert-triangle": (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"
+      />
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M12 9v4m0 4h.01" />
+    </svg>
+  ),
+  "alert-circle": (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01" />
+    </svg>
+  ),
+  minus: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
+    </svg>
+  ),
+  clock: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" />
+    </svg>
+  ),
+  banknote: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <rect width="20" height="12" x="2" y="6" rx="2" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="12" r="2" fill="none" stroke="currentColor" />
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M6 12h.01M18 12h.01" />
+    </svg>
+  ),
+  "arrow-right-left": (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m16 3 4 4-4 4" />
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M20 7H4" />
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m8 21-4-4 4-4" />
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="M4 17h16" />
+    </svg>
+  ),
 };
 
 interface IconProps {
