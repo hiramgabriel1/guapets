@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Icon } from "./Icon";
 
 interface ServiceCardProps {
@@ -9,7 +12,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ icon, name, description, price }: ServiceCardProps) {
   return (
-    <div
+    <motion.div
       className="group relative flex flex-col rounded-2xl p-5 transition-all hover:shadow-lg"
       style={{
         background: "rgba(255, 255, 255, 0.7)",
@@ -18,6 +21,8 @@ export function ServiceCard({ icon, name, description, price }: ServiceCardProps
         border: "1px solid rgba(255, 255, 255, 0.8)",
         boxShadow: "0 4px 16px rgba(56, 189, 248, 0.06)",
       }}
+      whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(56, 189, 248, 0.12)" }}
+      transition={{ type: "spring", stiffness: 300 }}
     >
       {/* Icon */}
       <div
@@ -36,18 +41,22 @@ export function ServiceCard({ icon, name, description, price }: ServiceCardProps
       {/* Price badge */}
       <div className="mt-4 flex items-center justify-between">
         <div className="flex gap-2">
-          <button
-            className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-sky-600"
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-sky-600"
             aria-label={`Editar ${name}`}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
           >
             <Icon name="pencil" size={14} />
-          </button>
-          <button
-            className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500"
+          </motion.button>
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-red-50 hover:text-red-500"
             aria-label={`Eliminar ${name}`}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.9 }}
           >
             <Icon name="trash-2" size={14} />
-          </button>
+          </motion.button>
         </div>
         <span
           className="rounded-full px-3 py-1 text-sm font-semibold"
@@ -59,6 +68,6 @@ export function ServiceCard({ icon, name, description, price }: ServiceCardProps
           {price}
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 }

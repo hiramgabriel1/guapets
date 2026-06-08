@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Sidebar } from "@/components/Sidebar";
 import { TopHeader } from "@/components/TopHeader";
 import { QuickActions } from "@/components/QuickActions";
@@ -87,11 +88,30 @@ export default function DashboardPage() {
           <QuickActions />
 
           {/* Stat cards */}
-          <div className="grid grid-cols-4 gap-4">
+          <motion.div
+            className="grid grid-cols-4 gap-4"
+            variants={{
+              hidden: { opacity: 0 },
+              show: {
+                opacity: 1,
+                transition: { staggerChildren: 0.08 },
+              },
+            }}
+            initial="hidden"
+            animate="show"
+          >
             {stats.map((stat) => (
-              <DashboardStatCard key={stat.label} {...stat} />
+              <motion.div
+                key={stat.label}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 },
+                }}
+              >
+                <DashboardStatCard {...stat} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Chart + Recent pets row */}
           <div className="flex gap-4">

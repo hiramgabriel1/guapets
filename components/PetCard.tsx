@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Icon } from "./Icon";
 
 interface PetCardProps {
@@ -12,7 +15,7 @@ interface PetCardProps {
 
 export function PetCard({ name, species, breed, age, gender, owner, type }: PetCardProps) {
   return (
-    <div
+    <motion.div
       className="flex flex-col rounded-xl p-5"
       style={{
         background: "rgba(255, 255, 255, 0.7)",
@@ -20,6 +23,8 @@ export function PetCard({ name, species, breed, age, gender, owner, type }: PetC
         border: "1px solid rgba(255, 255, 255, 0.8)",
         boxShadow: "0 4px 16px rgba(56, 189, 248, 0.06)",
       }}
+      whileHover={{ y: -4, boxShadow: "0 8px 24px rgba(56, 189, 248, 0.12)" }}
+      transition={{ type: "spring", stiffness: 300 }}
     >
       <div className="mb-3 flex flex-col items-center">
         <div className="relative mb-3">
@@ -56,27 +61,31 @@ export function PetCard({ name, species, breed, age, gender, owner, type }: PetC
       </div>
 
       <div className="flex gap-2">
-        <button
-          className="flex flex-1 items-center justify-center gap-1.5 rounded-full py-2 text-xs font-medium"
+        <motion.button
+          className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full py-2 text-xs font-medium"
           style={{
             background: "rgba(56, 189, 248, 0.1)",
             color: "#0284c7",
           }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           <Icon name="eye" size={12} />
           Ver
-        </button>
-        <button
-          className="flex flex-1 items-center justify-center gap-1.5 rounded-full py-2 text-xs font-medium"
+        </motion.button>
+        <motion.button
+          className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full py-2 text-xs font-medium"
           style={{
             background: "rgba(56, 189, 248, 0.1)",
             color: "#0284c7",
           }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           <Icon name="pencil" size={12} />
           Editar
-        </button>
+        </motion.button>
       </div>
-    </div>
+    </motion.div>
   );
 }

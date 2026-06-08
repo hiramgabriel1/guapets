@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Icon } from "./Icon";
 
 interface Medicamento {
@@ -94,18 +95,22 @@ export function MedicamentosTable() {
             <span className="text-sm text-slate-500">{m.dosis}</span>
             <ExistenciaBadge cantidad={m.existencia} />
             <div className="flex items-center justify-center gap-2">
-              <button
-                className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-100 text-sky-700 transition-colors hover:bg-sky-200"
+              <motion.button
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg bg-sky-100 text-sky-700 transition-colors hover:bg-sky-200"
                 aria-label={`Editar ${m.nombre}`}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <Icon name="pencil" size={13} />
-              </button>
-              <button
-                className="flex h-7 w-7 items-center justify-center rounded-lg bg-red-50 text-red-500 transition-colors hover:bg-red-100"
+              </motion.button>
+              <motion.button
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg bg-red-50 text-red-500 transition-colors hover:bg-red-100"
                 aria-label={`Eliminar ${m.nombre}`}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <Icon name="trash-2" size={13} />
-              </button>
+              </motion.button>
             </div>
           </div>
         ))}
@@ -115,15 +120,27 @@ export function MedicamentosTable() {
       <div className="flex items-center justify-between border-t border-slate-100 px-6 py-3.5">
         <span className="text-xs text-slate-400">Mostrando 8 de 8 medicamentos</span>
         <div className="flex items-center gap-1">
-          <button className="flex h-7 w-7 items-center justify-center rounded-lg border border-slate-200 text-slate-400">
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border border-slate-200 text-slate-400"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <Icon name="chevron-left" size={13} />
-          </button>
-          <button className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-xs font-medium text-primary-foreground">
+          </motion.button>
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg bg-primary text-xs font-medium text-primary-foreground"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
             1
-          </button>
-          <button className="flex h-7 w-7 items-center justify-center rounded-lg border border-slate-200 text-slate-400">
+          </motion.button>
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border border-slate-200 text-slate-400"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
             <Icon name="chevron-right" size={13} />
-          </button>
+          </motion.button>
         </div>
       </div>
     </div>

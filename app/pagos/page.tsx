@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Sidebar } from "@/components/Sidebar";
 import { TopHeader } from "@/components/TopHeader";
 import { PaymentSummaryChips } from "@/components/PaymentSummaryChips";
@@ -80,17 +81,19 @@ export default function PagosPage() {
                 <Icon name="chevron-right" size={12} className="rotate-90 text-slate-400" />
               </button>
             ))}
-            <button
-              className="ml-auto flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+            <motion.button
+              className="ml-auto flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
               style={{
                 background: "#38bdf8",
                 boxShadow: "0 4px 14px rgba(56, 189, 248, 0.35)",
               }}
               onClick={() => setModalOpen(true)}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
               <Icon name="plus" size={15} />
               <span>Registrar Pago</span>
-            </button>
+            </motion.button>
           </div>
 
           {/* Table */}

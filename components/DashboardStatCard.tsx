@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Icon } from "./Icon";
 
 interface DashboardStatCardProps {
@@ -18,7 +21,7 @@ export function DashboardStatCard({
   subtitle,
 }: DashboardStatCardProps) {
   return (
-    <div
+    <motion.div
       className="flex flex-col gap-3 rounded-xl p-5"
       style={{
         background: "rgba(255, 255, 255, 0.7)",
@@ -26,6 +29,8 @@ export function DashboardStatCard({
         border: "1px solid rgba(255, 255, 255, 0.8)",
         boxShadow: "0 4px 16px rgba(56, 189, 248, 0.06)",
       }}
+      whileHover={{ y: -4, boxShadow: "0 8px 24px rgba(56, 189, 248, 0.12)" }}
+      transition={{ type: "spring", stiffness: 300 }}
     >
       <div className="flex items-start justify-between">
         <div
@@ -51,6 +56,6 @@ export function DashboardStatCard({
           <p className="mt-0.5 text-xs text-slate-400">{subtitle}</p>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

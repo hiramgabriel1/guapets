@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Sidebar } from "@/components/Sidebar";
 import { TopHeader } from "@/components/TopHeader";
 import { StatCard } from "@/components/StatCard";
@@ -85,17 +86,19 @@ export default function DuenosPage() {
                 <span>Filtrar</span>
               </button>
             </div>
-            <button
-              className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+            <motion.button
+              className="flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground"
               style={{
                 background: "#38bdf8",
                 boxShadow: "0 4px 14px rgba(56, 189, 248, 0.35)",
               }}
               onClick={() => setDrawerOpen(true)}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
               <Icon name="plus" size={15} />
               <span>Nuevo Dueño</span>
-            </button>
+            </motion.button>
           </div>
 
           {/* Stat cards */}

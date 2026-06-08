@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "./Icon";
 
 interface DuenosDrawerProps {
@@ -9,20 +9,24 @@ interface DuenosDrawerProps {
 }
 
 export function DuenosDrawer({ open, onClose }: DuenosDrawerProps) {
-  if (!open) return null;
-
   return (
-    <div
-      className="fixed inset-y-0 right-0 z-10 flex"
-      style={{ minWidth: 380 }}
-    >
-      <div
-        className="flex min-h-full w-[380px] flex-col bg-white/85 backdrop-blur-[24px]"
-        style={{
-          borderLeft: "1px solid rgba(255, 255, 255, 0.9)",
-          boxShadow: "-8px 0 48px rgba(56, 189, 248, 0.1)",
-        }}
-      >
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="fixed inset-y-0 right-0 z-10 flex"
+          style={{ minWidth: 380 }}
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "100%" }}
+          transition={{ type: "spring", damping: 25, stiffness: 200 }}
+        >
+          <div
+            className="flex min-h-full w-[380px] flex-col bg-white/85 backdrop-blur-[24px]"
+            style={{
+              borderLeft: "1px solid rgba(255, 255, 255, 0.9)",
+              boxShadow: "-8px 0 48px rgba(56, 189, 248, 0.1)",
+            }}
+          >
         <div className="flex items-center justify-between border-b border-slate-200 px-6 py-5">
           <div>
             <h2 className="text-lg font-bold text-foreground">Nuevo Dueño</h2>
@@ -30,13 +34,15 @@ export function DuenosDrawer({ open, onClose }: DuenosDrawerProps) {
               Completa los datos del propietario
             </p>
           </div>
-          <button
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500"
+          <motion.button
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-slate-100 text-slate-500"
             onClick={onClose}
             aria-label="Cerrar"
+            whileHover={{ scale: 1.1, rotate: 90 }}
+            whileTap={{ scale: 0.9 }}
           >
             <Icon name="x" size={15} />
-          </button>
+          </motion.button>
         </div>
 
         <div className="flex flex-1 flex-col gap-5 px-6 py-6">
@@ -98,20 +104,28 @@ export function DuenosDrawer({ open, onClose }: DuenosDrawerProps) {
         </div>
 
         <div className="flex gap-3 border-t border-slate-100 px-6 py-5">
-          <button className="flex-1 rounded-full border border-slate-200 bg-white py-2.5 text-sm font-medium text-slate-500">
+          <motion.button
+            className="flex-1 cursor-pointer rounded-full border border-slate-200 bg-white py-2.5 text-sm font-medium text-slate-500"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
             Cancelar
-          </button>
-          <button
-            className="flex-1 rounded-full py-2.5 text-sm font-semibold text-primary-foreground"
+          </motion.button>
+          <motion.button
+            className="flex-1 cursor-pointer rounded-full py-2.5 text-sm font-semibold text-primary-foreground"
             style={{
               background: "linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%)",
               boxShadow: "0 4px 14px rgba(56, 189, 248, 0.35)",
             }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             Guardar Dueño
-          </button>
+          </motion.button>
         </div>
       </div>
-    </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

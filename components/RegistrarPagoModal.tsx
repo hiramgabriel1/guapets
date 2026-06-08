@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "./Icon";
 
 interface RegistrarPagoModalProps {
@@ -37,37 +38,52 @@ export function RegistrarPagoModal({ open, onClose }: RegistrarPagoModalProps) {
   const [showDuenoDropdown, setShowDuenoDropdown] = useState(false);
   const [selectedDueno, setSelectedDueno] = useState("");
 
-  if (!open) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={onClose} />
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <motion.div
+            className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+          />
 
-      {/* Modal */}
-      <div
-        className="relative w-[520px] max-h-[90vh] overflow-y-auto rounded-2xl"
-        style={{
-          background: "rgba(255, 255, 255, 0.85)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          border: "1px solid rgba(255, 255, 255, 0.9)",
-          boxShadow: "0 24px 64px rgba(56, 189, 248, 0.15)",
-        }}
-      >
+          <motion.div
+            className="relative w-[520px] max-h-[90vh] overflow-y-auto rounded-2xl"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            style={{
+              background: "rgba(255, 255, 255, 0.85)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              border: "1px solid rgba(255, 255, 255, 0.9)",
+              boxShadow: "0 24px 64px rgba(56, 189, 248, 0.15)",
+            }}
+          >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 px-6 py-5">
           <div>
             <h2 className="text-lg font-bold text-foreground">Registrar Pago</h2>
             <p className="mt-0.5 text-xs text-slate-500">Registra un nuevo pago en el sistema</p>
           </div>
-          <button
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-colors hover:bg-slate-200"
+          <motion.button
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-colors hover:bg-slate-200"
             onClick={onClose}
             aria-label="Cerrar"
+            whileHover={{ scale: 1.1, rotate: 90 }}
+            whileTap={{ scale: 0.9 }}
           >
             <Icon name="x" size={15} />
-          </button>
+          </motion.button>
         </div>
 
         {/* Body */}
@@ -189,23 +205,29 @@ export function RegistrarPagoModal({ open, onClose }: RegistrarPagoModalProps) {
 
         {/* Footer */}
         <div className="flex gap-3 border-t border-slate-100 px-6 py-5">
-          <button
-            className="flex-1 rounded-full border border-slate-200 bg-white py-2.5 text-sm font-medium text-slate-500 transition-colors hover:bg-slate-50"
+          <motion.button
+            className="flex-1 cursor-pointer rounded-full border border-slate-200 bg-white py-2.5 text-sm font-medium text-slate-500 transition-colors hover:bg-slate-50"
             onClick={onClose}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             Cancelar
-          </button>
-          <button
-            className="flex-1 rounded-full py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+          </motion.button>
+          <motion.button
+            className="flex-1 cursor-pointer rounded-full py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             style={{
               background: "linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%)",
               boxShadow: "0 4px 14px rgba(56, 189, 248, 0.35)",
             }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             Registrar Pago
-          </button>
+          </motion.button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

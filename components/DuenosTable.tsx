@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "./Icon";
 import { GlassCard } from "./GlassCard";
 
@@ -61,27 +62,33 @@ export function DuenosTable() {
             <span className="text-sm text-slate-500">{dueno.phone}</span>
             <span className="truncate pr-4 text-sm text-slate-500">{dueno.email}</span>
             <div className="flex items-center justify-center gap-2">
-              <button
-                className="flex h-7 w-7 items-center justify-center rounded-lg"
+              <motion.button
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg"
                 style={{ background: "#e0f2fe", color: "#0284c7" }}
                 aria-label={`Ver ${dueno.name}`}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <Icon name="eye" size={13} />
-              </button>
-              <button
-                className="flex h-7 w-7 items-center justify-center rounded-lg"
+              </motion.button>
+              <motion.button
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg"
                 style={{ background: "#e0f2fe", color: "#0284c7" }}
                 aria-label={`Editar ${dueno.name}`}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <Icon name="pencil" size={13} />
-              </button>
-              <button
-                className="flex h-7 w-7 items-center justify-center rounded-lg"
+              </motion.button>
+              <motion.button
+                className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg"
                 style={{ background: "#fee2e2", color: "#ef4444" }}
                 aria-label={`Eliminar ${dueno.name}`}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <Icon name="trash-2" size={13} />
-              </button>
+              </motion.button>
             </div>
           </div>
         ))}
@@ -92,48 +99,60 @@ export function DuenosTable() {
           Mostrando 8 de 1,284 dueños
         </span>
         <div className="flex items-center gap-1">
-          <button
-            className="flex h-7 w-7 items-center justify-center rounded-lg border border-slate-200 text-slate-400"
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border border-slate-200 text-slate-400"
             aria-label="Página anterior"
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <Icon name="chevron-left" size={13} />
-          </button>
-          <button
-            className="flex h-7 w-7 items-center justify-center rounded-lg text-xs font-medium"
+          </motion.button>
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-xs font-medium"
             style={{ background: "#38bdf8", color: "#fff" }}
             onClick={() => setCurrentPage(1)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             1
-          </button>
-          <button
-            className="flex h-7 w-7 items-center justify-center rounded-lg text-xs font-medium"
+          </motion.button>
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-xs font-medium"
             style={{ color: "#64748b" }}
             onClick={() => setCurrentPage(2)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             2
-          </button>
-          <button
-            className="flex h-7 w-7 items-center justify-center rounded-lg text-xs font-medium"
+          </motion.button>
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg text-xs font-medium"
             style={{ color: "#64748b" }}
             onClick={() => setCurrentPage(3)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             3
-          </button>
+          </motion.button>
           <span className="px-1 text-xs text-slate-400">...</span>
-          <button
-            className="flex h-7 w-7 items-center justify-center rounded-lg border border-slate-200 text-xs font-medium text-slate-400"
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border border-slate-200 text-xs font-medium text-slate-400"
             onClick={() => setCurrentPage(totalPages)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             {totalPages}
-          </button>
-          <button
-            className="flex h-7 w-7 items-center justify-center rounded-lg border border-slate-200 text-slate-400"
+          </motion.button>
+          <motion.button
+            className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border border-slate-200 text-slate-400"
             aria-label="Página siguiente"
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             <Icon name="chevron-right" size={13} />
-          </button>
+          </motion.button>
         </div>
       </div>
     </GlassCard>

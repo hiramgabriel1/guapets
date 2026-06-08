@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "./Icon";
 
 interface NuevaConsultaModalProps {
@@ -26,8 +27,6 @@ export function NuevaConsultaModal({ open, onClose }: NuevaConsultaModalProps) {
   const [medicamentos, setMedicamentos] = useState<{ name: string; dosis: string }[]>([]);
   const [showMedDropdown, setShowMedDropdown] = useState(false);
 
-  if (!open) return null;
-
   const toggleServicio = (s: string) => {
     setSelectedServicios((prev) =>
       prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]
@@ -50,34 +49,53 @@ export function NuevaConsultaModal({ open, onClose }: NuevaConsultaModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={onClose} />
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          {/* Backdrop */}
+          <motion.div
+            className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+          />
 
-      {/* Modal */}
-      <div
-        className="relative w-[680px] max-h-[90vh] overflow-y-auto rounded-2xl"
-        style={{
-          background: "rgba(255, 255, 255, 0.85)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          border: "1px solid rgba(255, 255, 255, 0.9)",
-          boxShadow: "0 24px 64px rgba(56, 189, 248, 0.15)",
-        }}
-      >
+          {/* Modal */}
+          <motion.div
+            className="relative w-[680px] max-h-[90vh] overflow-y-auto rounded-2xl"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            style={{
+              background: "rgba(255, 255, 255, 0.85)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              border: "1px solid rgba(255, 255, 255, 0.9)",
+              boxShadow: "0 24px 64px rgba(56, 189, 248, 0.15)",
+            }}
+          >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 px-6 py-5">
           <div>
             <h2 className="text-lg font-bold text-foreground">Nueva Consulta</h2>
             <p className="mt-0.5 text-xs text-slate-500">Registra una nueva consulta veterinaria</p>
           </div>
-          <button
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500"
+          <motion.button
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-slate-100 text-slate-500"
             onClick={onClose}
             aria-label="Cerrar"
+            whileHover={{ scale: 1.1, rotate: 90 }}
+            whileTap={{ scale: 0.9 }}
           >
             <Icon name="x" size={15} />
-          </button>
+          </motion.button>
         </div>
 
         {/* Body */}
@@ -207,20 +225,28 @@ export function NuevaConsultaModal({ open, onClose }: NuevaConsultaModalProps) {
 
         {/* Footer */}
         <div className="flex gap-3 border-t border-slate-100 px-6 py-5">
-          <button className="flex-1 rounded-full border border-slate-200 bg-white py-2.5 text-sm font-medium text-slate-500">
+          <motion.button
+            className="flex-1 cursor-pointer rounded-full border border-slate-200 bg-white py-2.5 text-sm font-medium text-slate-500"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
             Cancelar
-          </button>
-          <button
-            className="flex-1 rounded-full py-2.5 text-sm font-semibold text-primary-foreground"
+          </motion.button>
+          <motion.button
+            className="flex-1 cursor-pointer rounded-full py-2.5 text-sm font-semibold text-primary-foreground"
             style={{
               background: "linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%)",
               boxShadow: "0 4px 14px rgba(56, 189, 248, 0.35)",
             }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             Registrar Consulta
-          </button>
+          </motion.button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

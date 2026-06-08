@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { Icon } from "./Icon";
 
 const navItems = [
@@ -38,23 +39,28 @@ export function Sidebar() {
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
-            <Link
+            <motion.div
               key={item.href}
-              href={item.href}
-              className={`flex items-center gap-3 rounded-full px-3 py-2.5 text-sm font-medium transition-colors ${
-                isActive
-                  ? "bg-primary text-primary-foreground"
-                  : "text-slate-500 hover:bg-slate-100"
-              }`}
-              style={
-                isActive
-                  ? { boxShadow: "0 4px 12px rgba(56, 189, 248, 0.3)" }
-                  : undefined
-              }
+              whileHover={{ x: 4 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <Icon name={item.icon} size={17} />
-              <span>{item.label}</span>
-            </Link>
+              <Link
+                href={item.href}
+                className={`flex cursor-pointer items-center gap-3 rounded-full px-3 py-2.5 text-sm font-medium transition-colors ${
+                  isActive
+                    ? "bg-primary text-primary-foreground"
+                    : "text-slate-500 hover:bg-slate-100"
+                }`}
+                style={
+                  isActive
+                    ? { boxShadow: "0 4px 12px rgba(56, 189, 248, 0.3)" }
+                    : undefined
+                }
+              >
+                <Icon name={item.icon} size={17} />
+                <span>{item.label}</span>
+              </Link>
+            </motion.div>
           );
         })}
       </nav>
@@ -71,12 +77,14 @@ export function Sidebar() {
             Administrador
           </span>
         </div>
-        <button
-          className="ml-auto"
+        <motion.button
+          className="ml-auto cursor-pointer"
           aria-label="Cerrar sesión"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <Icon name="log-out" size={14} className="text-slate-500" />
-        </button>
+        </motion.button>
       </div>
     </aside>
   );
